@@ -1,6 +1,6 @@
 .post {
   background: var(--gray-800);
-  border-radiyus: 8px;
+  border-radius: 8px;
   padding: 2.5rem;
 }
 
@@ -20,7 +20,7 @@
 
 .content a {
   font-weight: bold;
-  color: var(--green-500);
+  color: var(--orange-500);
   text-decoration: none;
   border-radius: 2px;
   padding: 3px;
@@ -29,7 +29,7 @@
 }
 
 .content a:hover {
-  color: var(--green-300);
+  color: var(--orange-300);
 }
 
 .post > header {
@@ -69,7 +69,7 @@
   width: 100%;
   padding-top: 1.5rem;
   margin-top: 1.5rem;
-  botder-top: 1px solid var(--gray-600); 
+  border-top: 1px solid var(--gray-600); 
 }
 
 .commentForm > strong {
@@ -104,15 +104,16 @@
   padding: 1rem 1.5rem;
   margin-top: 1rem;
   border-radius: 8px;
-  border: 0;
-  background: var(--green-500);
+  border: 1px solid var(--orange-500);
+  background: transparent;
   color: var(--white);
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.1s;
 }
 
 .commentForm button[type=submit]:hover {
-  transform: scale(1.05);
+  background: var(--orange-500);
 }
 
 .commentList {

@@ -77,7 +77,7 @@
 }
 
 .commentBox footer button:hover {
-  color: var(--green-500);
+  color: var(--orange-500);
   cursor: pointer;
 }
 
