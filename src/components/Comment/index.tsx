@@ -1,14 +1,23 @@
 import { ThumbsUp, Trash } from "phosphor-react";
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "../Avatar";
 
 import styles from "./index.module.css";
 
 interface IProps {
   comment: string;
+  deleteComment: (comment: string) => void;
 }
 
-const Comment: React.FC<IProps> = ({ comment }) => {
+const Comment: React.FC<IProps> = ({ comment, deleteComment }) => {
+  const [likeCount, setLikeCount] = useState(0)
+
+  const handleSetLikeCount = () => {
+    setLikeCount((state) => {
+      return state + 1
+    })
+  }
+
   return (
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://github.com/JefteMedeiros.png" />
@@ -23,16 +32,16 @@ const Comment: React.FC<IProps> = ({ comment }) => {
               </time>
             </div>
 
-            <button title="Deletar comentário">
+            <button onClick={() => deleteComment(comment)} title="Deletar comentário">
               <Trash size={24} />
             </button>
           </header>
           <p>{comment}</p>
         </div>
         <footer>
-          <button>
+          <button onClick={handleSetLikeCount}>
             <ThumbsUp />
-            Aplaudir <span>20</span>
+            Aplaudir <span>{likeCount}</span>
           </button>
         </footer>
       </div>

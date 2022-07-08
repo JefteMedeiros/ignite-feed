@@ -28,18 +28,26 @@ interface IProps {
 }
 
 const Post: React.FC<IProps> = ({ post }) => {
-  const [ comments, setComments ] = useState<string[]>([]);
-  const [ commentContent, setCommentContent] = useState("")
+  const [comments, setComments] = useState<string[]>([]);
+  const [commentContent, setCommentContent] = useState("");
+
+  const deleteComment = (comment: string) => {
+    const newCommentList = comments.filter(
+      (commentContent) => commentContent !== comment
+    );
+
+    setComments(newCommentList);
+  };
 
   const handleSetComment = (a: string) => {
-    setCommentContent(a)
-  }
+    setCommentContent(a);
+  };
 
   const handleAddComment = () => {
-    event?.preventDefault()
-    setComments([...comments, commentContent])
-    setCommentContent("")
-  }
+    event?.preventDefault();
+    setComments([...comments, commentContent]);
+    setCommentContent("");
+  };
 
   const publishedDateFormat = format(
     post.publishedAt,
@@ -90,16 +98,27 @@ const Post: React.FC<IProps> = ({ post }) => {
       <form onSubmit={handleAddComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea  value={commentContent} onChange={(e) => handleSetComment(e.target.value)} placeholder="Deixe um comentário" />
+        <textarea
+          value={commentContent}
+          onChange={(e) => handleSetComment(e.target.value)}
+          required
+          placeholder="Deixe um comentário"
+        />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button disabled={!commentContent.length} type="submit">Publicar</button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={comment} comment={comment} />;
+          return (
+            <Comment
+              deleteComment={deleteComment}
+              key={comment}
+              comment={comment}
+            />
+          );
         })}
       </div>
     </article>
