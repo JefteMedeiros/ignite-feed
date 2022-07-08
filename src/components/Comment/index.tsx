@@ -4,20 +4,19 @@ import Avatar from "../Avatar";
 
 import styles from "./index.module.css";
 
-interface Props {
-  author: string
-  src: string;
+interface IProps {
+  comment: string;
 }
 
-const Comment: React.FC<Props> = ({author, src}) => {
+const Comment: React.FC<IProps> = ({ comment }) => {
   return (
     <div className={styles.comment}>
-      <Avatar hasBorder={false} src={src} />
+      <Avatar hasBorder={false} src="https://github.com/JefteMedeiros.png" />
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
-              <strong>{author}</strong>
+              <strong>Jefté Medeiros</strong>
 
               <time title="4 de Julho às 12h37" dateTime="2022-7-04 12:13:00">
                 Cerca de 2h atrás
@@ -28,7 +27,7 @@ const Comment: React.FC<Props> = ({author, src}) => {
               <Trash size={24} />
             </button>
           </header>
-          <p>Muito bom, parabéns!</p>
+          <p>{comment}</p>
         </div>
         <footer>
           <button>

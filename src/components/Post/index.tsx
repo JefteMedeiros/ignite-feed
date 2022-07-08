@@ -1,52 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
+import { format, formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 import Avatar from "../Avatar";
 import Comment from "../Comment";
 import styles from "./index.module.css";
 
-interface Props {
-  src: string;
-  author: string;
+type author = {
+  name: string;
   role: string;
+  avatar: string;
+};
+
+type content = {
+  type: string;
+  content: string;
+};
+
+type post = {
+  id?: number;
+  content: content[];
+  author: author;
+  publishedAt: Date;
+};
+
+interface IProps {
+  post: post;
 }
 
-const Post: React.FC<Props> = ({src, author, role}) => {
+const Post: React.FC<IProps> = ({ post }) => {
+  const [ comments, setComments ] = useState<string[]>([]);
+  const [ commentContent, setCommentContent] = useState("")
+
+  const handleSetComment = (a: string) => {
+    setCommentContent(a)
+  }
+
+  const handleAddComment = () => {
+    event?.preventDefault()
+    setComments([...comments, commentContent])
+    setCommentContent("")
+  }
+
+  const publishedDateFormat = format(
+    post.publishedAt,
+    "d 'de' LLLL 'às' HH'h'mm",
+    {
+      locale: ptBR,
+    }
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar hasBorder={true} src={src}/>
+          <Avatar hasBorder={true} src={post.author.avatar} />
           <div className={styles.authorInfo}>
-            <strong>{author}</strong>
-            <span>{role}</span>
+            <strong>{post.author.name}</strong>
+            <span>{post.author.role}</span>
           </div>
         </div>
 
-        <time title="4 de Julho às 12h37" dateTime="2022-7-04 12:13:00">
-          Publicado há 1h
+        <time
+          title={publishedDateRelativeToNow}
+          dateTime={post.publishedAt.toISOString()}
+        >
+          {publishedDateFormat}
         </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-        </p>
-
-        <p>
-          👉 <a href="#"> jane.design/doctorcare</a>
-        </p>
-        <p>
-          <a href="#">#novoprojeto</a> <a href="#">#nlw</a>{" "}
-          <a href="#">#rocketseat</a>{" "}
-        </p>
+        {post.content.map((line) => {
+          if (line.type === "paragraph") {
+            return <p key={line.content}>{line.content}</p>;
+          } else if (line.type === "link") {
+            return (
+              <p key={line.content}>
+                <a href="#">{line.content}</a>
+              </p>
+            );
+          }
+        })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleAddComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder="Deixe um comentário" />
+        <textarea  value={commentContent} onChange={(e) => handleSetComment(e.target.value)} placeholder="Deixe um comentário" />
 
         <footer>
           <button type="submit">Publicar</button>
@@ -54,8 +98,9 @@ const Post: React.FC<Props> = ({src, author, role}) => {
       </form>
 
       <div className={styles.commentList}>
-        <Comment src="https://avatars.githubusercontent.com/u/87246224?v=4" author="Samuel Luiz" />
-        <Comment src="https://pps.whatsapp.net/v/t61.24694-24/267701331_768933000717359_7386067221170486321_n.jpg?ccb=11-4&oh=01_AVymHjrCVsX1liJXHbHmwcNnw9VHRwkBQP-zuIRuLxTuZg&oe=62D311F9" author="Pedro Lucas" />
+        {comments.map((comment) => {
+          return <Comment key={comment} comment={comment} />;
+        })}
       </div>
     </article>
   );

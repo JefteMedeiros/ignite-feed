@@ -1,23 +1,87 @@
-import React from 'react'
-import Header from './components/Header'
-import './global.css'
-import styles from './app.module.css';
-import Sidebar from './components/Sidebar';
-import Post from './components/Post';
+import React from "react";
+import Header from "./components/Header";
+import "./global.css";
+import styles from "./app.module.css";
+import Sidebar from "./components/Sidebar";
+import Post from "./components/Post";
 
 const App: React.FC = () => {
+  const posts = [
+    {
+      id: 1,
+      author: {
+        name: "Geovana Bezerra",
+        role: "UI/UX Designer",
+        avatar:
+          "https://pps.whatsapp.net/v/t61.24694-24/260053004_1063856937881432_3671821027234621640_n.jpg?ccb=11-4&oh=5c170f46dbcd7a03a86ec1bc6d05fdab&oe=62D7280E",
+      },
+      content: [
+        {
+          type: "paragraph",
+          content: "Oiii, tudo bem pessoal?",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Então galera, hoje trouxe pra vocês meu mais novo protótipo no Figma! Trata-se de uma landing page para um salão de beleza, contendo características de design futurísticas e com foco em acessibilidade. Espero que gostem viu?",
+        },
+        {
+          type: "paragraph",
+          content: "Link do projeto abaixo:",
+        },
+        { type: "link", content: "projeto.salao.da.barbie/legal" },
+      ],
+      publishedAt: new Date("2022-06-07"),
+    },
+    {
+      id: 2,
+      author: {
+        name: "Samuel Luiz",
+        role: "Front-end Developer",
+        avatar:
+          "https://pps.whatsapp.net/v/t61.24694-24/147976775_1150159979107944_1217930821709761510_n.jpg?ccb=11-4&oh=6740c2c3242965bd4eb4a3a591416d5f&oe=62D8142D",
+      },
+      content: [
+        {
+          type: "paragraph",
+          content: "Fala galera, tudo bom?",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Então, nessa publicação venho trazer minha página de tributo ao Olympique de Marseille, meu time do coração!",
+        },
+        {
+          type: "paragraph",
+          content:
+            " A página foi feita com o intuito de contar alguns feitos e de fazer uma homenagem ao time, que eu amo. Espero que curtam!",
+        },
+        {
+          type: "paragraph",
+          content: "Link do projeto abaixo:",
+        },
+        {
+          type: "link",
+          content: "l.olympique.de.marseille.le.plus.grand.de.france.com",
+        },
+      ],
+      publishedAt: new Date("2022-05-07"),
+    },
+  ];
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post role="Frontend Developer" author="Samuel Luiz" src="https://pps.whatsapp.net/v/t61.24694-24/147976775_1150159979107944_1217930821709761510_n.jpg?ccb=11-4&oh=5de07da8908421b451c39e58eee39278&oe=62D3AF2D" />
-          <Post role="UI/UX Designer" author="Geovana Bezerra" src="https://pps.whatsapp.net/v/t61.24694-24/260053004_1063856937881432_3671821027234621640_n.jpg?ccb=11-4&oh=63839a28e22a51793fd49517f5174348&oe=62D2C30E" />
+          {posts.map((e) => {
+            return <Post key={e.id} post={e} />;
+          })}
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
