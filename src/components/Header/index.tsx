@@ -6,10 +6,7 @@ import IgniteLogo from '../../img/ignite-logo.svg';
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <div>
-        <strong>Ignite Feed</strong>
-        <span>By: Jefté Medeiros</span>
-      </div>
+      <strong>Ignite Feed</strong>
       <img src={IgniteLogo} alt="Logotipo do ignite" />
     </header>
   );

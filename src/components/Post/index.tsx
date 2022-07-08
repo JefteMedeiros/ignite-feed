@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import Avatar from "../Avatar";
@@ -31,7 +31,7 @@ const Post: React.FC<IProps> = ({ post }) => {
   const [comments, setComments] = useState<string[]>([]);
   const [commentContent, setCommentContent] = useState("");
 
-  const deleteComment = (comment: string) => {
+  const handleDeleteComment = (comment: string) => {
     const newCommentList = comments.filter(
       (commentContent) => commentContent !== comment
     );
@@ -43,8 +43,8 @@ const Post: React.FC<IProps> = ({ post }) => {
     setCommentContent(a);
   };
 
-  const handleAddComment = () => {
-    event?.preventDefault();
+  const handleAddComment = (event: FormEvent) => {
+    event.preventDefault();
     setComments([...comments, commentContent]);
     setCommentContent("");
   };
@@ -66,7 +66,7 @@ const Post: React.FC<IProps> = ({ post }) => {
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar hasBorder={true} src={post.author.avatar} />
+          <Avatar alt="" hasBorder={true} src={post.author.avatar} />
           <div className={styles.authorInfo}>
             <strong>{post.author.name}</strong>
             <span>{post.author.role}</span>
@@ -114,7 +114,7 @@ const Post: React.FC<IProps> = ({ post }) => {
         {comments.map((comment) => {
           return (
             <Comment
-              deleteComment={deleteComment}
+              deleteComment={handleDeleteComment}
               key={comment}
               comment={comment}
             />

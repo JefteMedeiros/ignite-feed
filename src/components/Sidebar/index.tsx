@@ -13,7 +13,7 @@ const Sidebar: React.FC = () => {
         />
 
       <div className={styles.profile}>
-        <Avatar hasBorder={true} src="https://avatars.githubusercontent.com/u/87246224?v=4" />
+        <Avatar hasBorder={true} src="https://avatars.githubusercontent.com/u/87246224?v=4" alt=""/>
         <strong>Jefté Medeiros</strong>
         <span>Web Developer</span>
       </div>

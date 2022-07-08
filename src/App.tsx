@@ -8,32 +8,6 @@ import Post from "./components/Post";
 const App: React.FC = () => {
   const posts = [
     {
-      id: 1,
-      author: {
-        name: "Geovana Bezerra",
-        role: "UI/UX Designer",
-        avatar:
-          "https://pps.whatsapp.net/v/t61.24694-24/260053004_1063856937881432_3671821027234621640_n.jpg?ccb=11-4&oh=5c170f46dbcd7a03a86ec1bc6d05fdab&oe=62D7280E",
-      },
-      content: [
-        {
-          type: "paragraph",
-          content: "Oiii, tudo bem pessoal?",
-        },
-        {
-          type: "paragraph",
-          content:
-            "Então galera, hoje trouxe pra vocês meu mais novo protótipo no Figma! Trata-se de uma landing page para um salão de beleza, contendo características de design futurísticas e com foco em acessibilidade. Espero que gostem viu?",
-        },
-        {
-          type: "paragraph",
-          content: "Link do projeto abaixo:",
-        },
-        { type: "link", content: "projeto.salao.da.barbie/legal" },
-      ],
-      publishedAt: new Date("2022-06-07"),
-    },
-    {
       id: 2,
       author: {
         name: "Samuel Luiz",
@@ -67,6 +41,32 @@ const App: React.FC = () => {
       ],
       publishedAt: new Date("2022-05-07"),
     },
+    {
+      id: 1,
+      author: {
+        name: "Geovana Bezerra",
+        role: "UI/UX Designer",
+        avatar:
+          "https://pps.whatsapp.net/v/t61.24694-24/260053004_1063856937881432_3671821027234621640_n.jpg?ccb=11-4&oh=5c170f46dbcd7a03a86ec1bc6d05fdab&oe=62D7280E",
+      },
+      content: [
+        {
+          type: "paragraph",
+          content: "Oiii, tudo bem pessoal?",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Então galera, hoje trouxe pra vocês meu mais novo protótipo no Figma! Trata-se de uma landing page para um salão de beleza, contendo características de design futurísticas e com foco em acessibilidade. Espero que gostem viu?",
+        },
+        {
+          type: "paragraph",
+          content: "Link do projeto abaixo:",
+        },
+        { type: "link", content: "projeto.salao.da.barbie/legal" },
+      ],
+      publishedAt: new Date("2022-06-07"),
+    }
   ];
 
   return (

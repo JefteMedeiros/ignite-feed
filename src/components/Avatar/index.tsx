@@ -1,14 +1,13 @@
-import React from "react";
+import React, { ImgHTMLAttributes } from "react";
 import styles from "./index.module.css";
 
-interface Props {
-  src: string;
+interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   hasBorder: boolean;
 }
 
-const Avatar: React.FC<Props> = ({src, hasBorder}) => {
+const Avatar: React.FC<Props> = ({hasBorder, ...props}) => {
   return (
-    <img className={hasBorder ? styles.avatarWithBorder : styles.avatar} src={src} alt="" />
+    <img className={hasBorder ? styles.avatarWithBorder : styles.avatar} {...props} />
   );
 };
 
