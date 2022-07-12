@@ -44,10 +44,10 @@ const App: React.FC = () => {
     {
       id: 1,
       author: {
-        name: "Geovana Bezerra",
+        name: "Julia Areal",
         role: "UI/UX Designer",
         avatar:
-          "https://pps.whatsapp.net/v/t61.24694-24/260053004_1063856937881432_3671821027234621640_n.jpg?ccb=11-4&oh=5c170f46dbcd7a03a86ec1bc6d05fdab&oe=62D7280E",
+          "https://pps.whatsapp.net/v/t61.24694-24/216593520_1417252072047879_2365747145734127530_n.jpg?ccb=11-4&oh=01_AVytDU86oq69xPUpOU-HXa3nkdPPbx0Ss0NYw_NW1lsDcw&oe=62DE7BB3",
       },
       content: [
         {
