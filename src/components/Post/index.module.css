@@ -2,6 +2,7 @@
   background: var(--gray-800);
   border-radius: 8px;
   padding: 2.5rem;
+  width: 100%
 }
 
 .post + .post {
@@ -127,4 +128,10 @@
 
 .commentList {
   margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .post {
+    padding: 1rem;
+  }
 }
