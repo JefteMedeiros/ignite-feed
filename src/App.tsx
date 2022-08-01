@@ -13,7 +13,7 @@ const App: React.FC = () => {
         name: "Samuel Luiz",
         role: "Front-end Developer",
         avatar:
-          "https://pps.whatsapp.net/v/t61.24694-24/147976775_1150159979107944_1217930821709761510_n.jpg?ccb=11-4&oh=6740c2c3242965bd4eb4a3a591416d5f&oe=62D8142D",
+        "https://github.com/samluiz.png"
       },
       content: [
         {
@@ -44,10 +44,10 @@ const App: React.FC = () => {
     {
       id: 1,
       author: {
-        name: "Julia Areal",
+        name: "Geovana Bezerra",
         role: "UI/UX Designer",
         avatar:
-          "https://pps.whatsapp.net/v/t61.24694-24/216593520_1417252072047879_2365747145734127530_n.jpg?ccb=11-4&oh=01_AVytDU86oq69xPUpOU-HXa3nkdPPbx0Ss0NYw_NW1lsDcw&oe=62DE7BB3",
+        "https://pps.whatsapp.net/v/t61.24694-24/294262285_602689631266080_100385617173168283_n.jpg?ccb=11-4&oh=01_AVxdhgXZ8EwLlFG3g3DWSqJhZtMDYtOeITt3ZQFuw8tAiw&oe=62F62AB6",
       },
       content: [
         {
